@@ -1,0 +1,54 @@
+<div class="bg-gray-100 min-h-screen">
+  <!-- Hero Section -->
+  <div class="bg-indigo-700 text-white">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+      <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">Welcome to BlogApp</h1>
+      <p class="mt-6 text-xl max-w-3xl">Discover inspiring stories, insightful articles, and connect with a community of passionate writers and readers.</p>
+      <%= link_to "Start Reading", "#recent-posts", class: "mt-8 inline-block bg-white text-indigo-600 font-bold py-3 px-6 rounded-lg hover:bg-indigo-50 transition duration-300" %>
+    </div>
+  </div>
+
+  <!-- Featured Posts Section -->
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <h2 id="recent-posts" class="text-3xl font-extrabold text-gray-900 mb-6">Recent Posts</h2>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <% 3.times do |i| %>
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="https://source.unsplash.com/random/400x200?sig=<%= i %>" alt="Blog post image" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Amazing Blog Post Title</h3>
+            <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <%= link_to "Read More", "#", class: "text-indigo-600 hover:text-indigo-800 font-medium" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Categories Section -->
+  <div class="bg-gray-200 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Explore Categories</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <% ["Technology", "Travel", "Food", "Lifestyle", "Science", "Art", "Health", "Business"].each do |category| %>
+          <%= link_to "#", class: "bg-white rounded-lg p-4 text-center hover:shadow-md transition duration-300" do %>
+            <span class="text-lg font-medium text-gray-900"><%= category %></span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="bg-indigo-700 text-white">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+        <span class="block">Ready to start writing?</span>
+        <span class="block text-indigo-300">Join our community today.</span>
+      </h2>
+      <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+        <%= link_to "Sign Up Now", new_user_registration_path, class: "inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50" %>
+      </div>
+    </div>
+  </div>
+</div>

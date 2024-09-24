@@ -1,0 +1,75 @@
+<div class="min-h-screen flex flex-col justify-center items-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full bg-white shadow-lg rounded-lg p-8 space-y-6">
+    <h2 class="text-3xl font-bold text-gray-900 text-center">Edit <%= resource_name.to_s.humanize %></h2>
+
+    <!-- Form -->
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "space-y-6", data: { turbo: false } }) do |f| %>
+      <!-- Error Messages -->
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <!-- Name Field -->
+      <div class="space-y-2">
+        <%= f.label :name, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.text_field :name, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+      </div>
+      <!-- Email Field -->
+      <div class="space-y-2">
+        <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <!-- Pending Confirmation Notice -->
+        <div class="text-sm text-yellow-500">
+          Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+        </div>
+      <% end %>
+
+      <!-- Password Field -->
+      <div class="space-y-2">
+        <%= f.label :password, "New Password (leave blank if you don't want to change it)", class: "block text-sm font-medium text-gray-700" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+        <% if @minimum_password_length %>
+          <small class="text-gray-500"><%= @minimum_password_length %> characters minimum</small>
+        <% end %>
+      </div>
+
+      <!-- Password Confirmation Field -->
+      <div class="space-y-2">
+        <%= f.label :password_confirmation, "Confirm New Password", class: "block text-sm font-medium text-gray-700" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+      </div>
+
+      <!-- Current Password Field -->
+      <div class="space-y-2">
+        <%= f.label :current_password, "Current Password (required to save changes)", class: "block text-sm font-medium text-gray-700" %>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+      </div>
+
+      <!-- Image Upload Field -->
+      <div class="field">
+        <%= f.label :avatar, "Profile Picture" %><br />
+        <%= f.file_field :avatar %>
+      </div>
+
+
+      <!-- Update Button -->
+      <div>
+        <%= f.submit "Update", class: "w-full flex justify-center py-3 px-4 border border-transparent rounded-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out" %>
+      </div>
+    <% end %>
+    
+
+    <!-- Cancel Account Section -->
+    <div class="mt-6 text-center">
+      <h3 class="text-lg font-semibold text-gray-900">Cancel My Account</h3>
+      <p class="text-sm text-gray-600">Unhappy? We're sorry to see you go!</p>
+      <%= button_to "Cancel my account", registration_path(resource_name), method: :delete, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, class: "mt-3 inline-block py-2 px-4 border border-red-600 text-red-600 hover:bg-red-600 hover:text-white font-medium rounded-md transition duration-150 ease-in-out" %>
+    </div>
+
+    <!-- Back Button -->
+    <div class="text-center mt-4">
+      <%= link_to "Back", :back, class: "text-indigo-600 hover:text-indigo-500 font-medium" %>
+    </div>
+  </div>
+</div>
